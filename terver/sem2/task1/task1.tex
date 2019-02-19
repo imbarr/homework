@@ -1,0 +1,88 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[left=2cm, right=2cm, top=2cm]{geometry}
+
+\begin{document}
+\raggedright
+\begin{sloppypar}
+\section*{№1}
+
+
+Любому алгоритму сортировки можно сопоставить дерево, в котором вершины соответствуют состояниям алгоритма, ребра - переходам в новое состояние на основании сравнения каких-либо двух чисел в массиве, листья - конечным состояниям в алгоритме, в которых получаем отсортированный массив. Сравнение - бинарная операция, значит каждая вершина имеет не более двух сыновей. Существует $n!$ перестановок массива длины $n$, значит листьев должно быть столько же, иначе найдутся входные данные, на которых алгоритм будет работать некорректно. Легко понять, что двоичное дерево высоты $h$ имеет не более $2^h$ листьев. Отсюда получаем:
+
+\begin{equation}
+	n! \leq l \leq 2^h \textup{, где l - количество листьев}
+\end{equation}
+
+Логарифмируя, получаем:
+
+\begin{equation}
+	h \geq \log_2 n! = \sum_{k=1}^n log_2 k > \frac{n}{2} log_2 \frac{n}{2} = \frac{n}{2}(\log_2 n - \log_2 2) = O(\frac{n}{2} \log_2 n - \frac{n}{2}) = O(n \log n)
+\end{equation}
+
+Высота дерева не менее $O(n \log n)$, значит найдутся входные данные, на которых алгоритм выполнит $O(n \log n)$ сравнений. Положим, что операция сравнения 2-х произвольных чисел в массиве выполняется за $O(1)$. Следовательно, сложность работы алгоритма - не менее $O(n \log n)$.
+
+\section*{№2}
+
+$C_{4n}^n = \frac{(4n)!}{n!(3n)!} =
+ \frac{
+  \sqrt{8 \pi n} (\frac{4n}{e})^{4n} + o(1)}{
+   (\sqrt{2 \pi n} (\frac{n}{e})^n + o(1))
+   (\sqrt{6 \pi n} (\frac{3n}{e})^{3n} + o(1)) 
+ } \sim
+ \frac{
+  \sqrt{8 \pi n} (\frac{256 n^4}{e^4})^n}{
+  \sqrt{12} \pi n (\frac{27 n^4}{e^2})^n} =
+ \frac{256 \sqrt{2}}{27 e^2 \sqrt{\pi n}}$
+
+\section*{№4}
+
+Пусть $P_n$ - вероятность ровно $n$ попаданий. Вычисление $P_0$ и $P_1$ по формуле Бернулли может быть затруднительно, поэтому воспользуемся формулой Пуассона:
+
+\begin{equation}
+	P_0 = 5^0 e^{-5} \approx 0.0067
+\end{equation}
+\begin{equation}
+	P_1 = 5^1 e^{-5} \approx 0.0337
+\end{equation}
+
+Искомую вероятность $P$ можно найти следующим образом:
+
+\begin{equation}
+	P = 1 - P_0 - P_1 \approx 0.9596
+\end{equation}
+
+\section*{№5}
+
+Пусть $P_i^m$ - вероятность того, что в i-ом множестве деталей m неисправных. Посчитаем по формуле пуассона:
+
+\begin{equation}
+	P_1^0 = e^{-0.3} \approx 0.7408
+\end{equation}
+\begin{equation}
+	P_1^1 = 0.3 e^{-0.3} \approx 0.2222
+\end{equation}
+\begin{equation}
+	P_2^0 = e^{-0.4} \approx 0.6703
+\end{equation}
+\begin{equation}
+	P_2^1 = 0.4 e^{-0.4} \approx 0.2681
+\end{equation}
+\begin{equation}
+	P_3^0 = e^{-0.7} \approx 0.4966
+\end{equation}
+\begin{equation}
+	P_3^1 = 0.7 e^{-0.7} \approx 0.3476
+\end{equation}
+
+Вычислим искомую вероятность:
+
+\begin{equation}
+	P = 1 - P_1^0 P_2^0 P_3^0 - P_1^1 P_2^0 P_3^0 - P_1^0 P_2^1 P_3^0 - P_1^0 P_2^0 P_3^1 \approx 0.4082
+\end{equation} 
+
+\end{sloppypar}
+\end{document}
