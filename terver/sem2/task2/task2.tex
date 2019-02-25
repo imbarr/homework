@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{tabulary}
+\usepackage[left=2cm, right=2cm, top=2cm]{geometry}
+
+\begin{document}
+\raggedright
+\begin{sloppypar}
+\section*{№1}
+Найдем матожидание случайной величины $\xi$, равной количеству опечаток на некоторой странице.
+
+\begin{equation}
+  E\xi = \sum_{i = 1}^{50} E\xi_i = \sum_{i = 1}^{50} \frac{1}{500} = \frac{1}{10}
+\end{equation}
+
+...где $\xi_i$ - случайная величина, равная 1, если $i$-я по счету опечатка оказалась на выбранной странице, и 0 в противном случае.
+
+\begin{enumerate}
+  \item $P(\xi \geq 3) \leq \frac{E\xi}{3} = \frac{1}{30}$
+  \item $P(\xi = 0) = 1 - P(\xi \geq 1) \geq \frac{9}{10}$
+\end{enumerate}
+  
+\section*{№2}
+Посчитаем дисперсию $\xi_1$, равной количеству очков, выпавших при первом броске.
+
+\begin{equation}
+  D\xi_1 = E((\xi - E\xi)^2) = \frac{1}{6}((1 - 3.5)^2 + (2 - 3.5)^2 + (3 - 3.5)^2 + (4 - 3.5)^2 + (5 - 3.5)^2 + (6 - 3.5)^2) = \frac{35}{12}
+\end{equation}
+
+Теперь оценим искомую вероятность используя закон больших чисел.
+
+\begin{equation}
+  P(|\frac{\sum_{i = 1}^{1000} \xi_i}{n} - E\xi_1| \leq 0.3) \geq 1 - P(|...| \geq 0.3) \geq 1 - \frac{D\xi_1}{1000 * 0.3^2} \approx 0.9676
+\end{equation}
+
+Таким образом, искомая вероятность не меньше чем 0.9676.
+
+\section*{№3}
+Уточним условие задачи. Судя по всему, количество кораблей равно количеству коммерсантов, а в фонд отправляются не 6\% прибыли, а 6\% от всей суммы убытков при захвате корабля. Тогда необходимо решить такую задачу: найти наименьшее n, при котором:
+
+\begin{equation}
+  P(\xi > 0.06n) \leq 0.05
+\end{equation}
+
+...где $\xi$ равна количеству захваченных кораблей. Из неравенства Маркова:
+
+\begin{equation}
+  P(\xi > 0.06n) \leq P(\xi \geq 0.06n) \leq \frac{E\xi}{0.06n} = \frac{5}{6n} \leq 0.05
+\end{equation}
+
+Из последнего неравенства получаем:
+
+\begin{equation}
+  n \geq \frac{50}{3} \approx 16.6
+\end{equation}
+
+Значит, наименьшее количество коммерсантов равно 17.
+
+\section*{№4}
+Пусть $\xi$ равна количеству ошибок в слове. Используя неравенство Маркова и свойства o-малых, получаем:
+
+\begin{equation}
+  P(\xi \geq 1) \leq E\xi = \sum_{i = 1}^n E\xi_i = \sum_{i = 1}^n o(\frac{1}{n}) = o(\frac{1}{n})
+\end{equation}
+
+...где $\xi_i$ равна 1, если в $i$-ой позиции возникла ошибка и 0 в противном случае. Отсюда:
+
+\begin{equation}
+  \lim_{n \to \infty} P(\xi \geq 1) \leq \lim_{n \to \infty} o(\frac{1}{n}) = 0
+\end{equation}
+
+\end{sloppypar}
+\end{document}
