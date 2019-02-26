@@ -18,7 +18,7 @@
 
 ...где $\xi_i$ - случайная величина, равная 1, если $i$-я по счету опечатка оказалась на выбранной странице, и 0 в противном случае.
 
-\begin{enumerate}
+\begin{enumerate}[label=(\alph*)]
   \item $P(\xi \geq 3) \leq \frac{E\xi}{3} = \frac{1}{30}$
   \item $P(\xi = 0) = 1 - P(\xi \geq 1) \geq \frac{9}{10}$
 \end{enumerate}
@@ -71,6 +71,16 @@
 \begin{equation}
   \lim_{n \to \infty} P(\xi \geq 1) \leq \lim_{n \to \infty} o(\frac{1}{n}) = 0
 \end{equation}
+
+\section*{№5}
+\begin{enumerate}[label=(\alph*)]
+\item
+  \begin{equation}
+    \lim_{n \to \infty} np = 0 \implies \lim_{n \to \infty} \frac{p}{\frac{1}{n}} = 0 \implies p = o(\frac{1}{n})
+  \end{equation}
+  
+  Если смотреть на множество ребер графа как на слово, то задача сводится к задаче №4. Получается, что в таком графе асимптотически почти наверняка нет ребер, а значит и нет подграфов $K_3$.
+\end{enumerate}
 
 \end{sloppypar}
 \end{document}
